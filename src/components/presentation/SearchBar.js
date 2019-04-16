@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         onChangeText={(text) => this.setState({text})}
         value={this.state.text}
-        onFocus={() => this.handleSearchFocus(true)}
+        onFocus={() => this.onFocus()}
         style={styles.search}
       />
     );
