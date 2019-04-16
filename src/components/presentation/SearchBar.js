@@ -13,20 +13,9 @@ class SearchBar extends React.Component {
     super(props);
     this.state = { 
         text: 'Search',
-        searchFocus: new Animated.Value(0.6),
-        searchString: null,
      };
   }
 
-  handleSearchFocus(status) {
-    Animated.timing(
-      this.state.searchFocus,
-      {
-        toValue: status ? 0.8 : 0.6, // status === true, increase flex size
-        duration: 150, // ms
-      }
-    ).start();
-  }
 
   render() {
     return (
@@ -42,6 +31,8 @@ class SearchBar extends React.Component {
 
   onFocus() {
       this.setState({text: ''})
+      //bessere Animation in Plantapp, allerdings sehr aufwendig zu kopieren, da ein flexible Block genutzt wird,
+      //den die selbst implementiert haben
   }
 }
 
