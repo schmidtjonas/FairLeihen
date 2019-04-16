@@ -34,10 +34,8 @@ const styles = StyleSheet.create({
     productsContainer : {
         flex: 1,
         width: 100+"%", 
-        borderRadius: 4,
-        borderWidth: 0.5,
-        borderColor: '#d6d7da',
         flexDirection: 'row',
+        marginBottom: 10,
     }
 });
 
