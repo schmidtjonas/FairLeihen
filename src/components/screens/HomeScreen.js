@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import ProductPreview from '../presentation/ProductPreview';
+import ProductsContainer from '../container/ProductsContainer';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -32,8 +32,7 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
-
-           <ProductPreview />  
+          <ProductsContainer />  
 
         </ScrollView>
 
