@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 10503,
-  "expoServerNgrokUrl": "https://2a-hwr.anonymous.fairleihen.exp.direct",
-  "packagerNgrokUrl": "https://packager.2a-hwr.anonymous.fairleihen.exp.direct",
-  "ngrokPid": 10584
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

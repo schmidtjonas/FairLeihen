@@ -21,15 +21,12 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.headerContainer}>
-         
-          <SearchBar />
-          
+        <View style={styles.headerContainer}>      
+          <SearchBar />          
           </View>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+            <TabSelect/>
             
-          <TabSelect/>
-
           </ScrollView>
       </View>
     );
