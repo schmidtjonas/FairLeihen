@@ -12,10 +12,15 @@ import { WebBrowser } from 'expo';
 import SearchBar from '../presentation/SearchBar';
 import TabSelect from '../presentation/TabSelect';
 
-export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
+class HomeScreen extends React.Component {
+  state = {
+    activeTab: 1,
+  }
+
+  changeTab = tab => {
+    console.log(tab);
+    this.setState({activeTab: tab});
+  }
 
 
   render() {
@@ -28,7 +33,7 @@ export default class HomeScreen extends React.Component {
           </View>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             
-          <TabSelect/>
+          <TabSelect tabs={[1, 2, 3]} callback={this.changeTab}/>
 
           </ScrollView>
       </View>
@@ -54,3 +59,6 @@ const styles = StyleSheet.create({
   },
   
 });
+
+
+export default HomeScreen;

@@ -18,11 +18,14 @@ class TabSelect extends React.Component{
     	active: 1,
     	categories: [],
   	
-  	}
+	}
+
+		
 
   handleTab = tab => {
+		this.props.callback(tab);
 
-    this.setState({ active: tab});
+		this.setState({ active: tab});
   }
 
 	renderTab(tab) {
@@ -50,7 +53,7 @@ class TabSelect extends React.Component{
 
 
 	render(){
-		const tabs = [1, 2];
+		const tabs = this.props.tabs;
 
 		return (
 			<View>
