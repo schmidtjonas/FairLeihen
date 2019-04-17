@@ -33,21 +33,18 @@ class TabSelect extends React.Component{
 	    const isActive = active === tab;
 
 	    return (
-	    	<View>
 		      <TouchableOpacity
 		        key={`tab-${tab}`}
 		        onPress={() => this.handleTab(tab)}
-		        style={[
-		          styles.tab,
-		          isActive ? styles.active : null
-		        ]}
+		        style={styles.tab}
 		      >
-		        <Text size={16} medium gray={!isActive} secondary={isActive}>
-		          {tab}
-		        </Text>
+						<View>
+							<Text size={16} medium gray={!isActive} secondary={isActive}>
+								{tab}
+							</Text>
+						</View>
 		      </TouchableOpacity>
 		      
-		     </View>
 	    )
 	  }
 
@@ -60,7 +57,9 @@ class TabSelect extends React.Component{
 				<View style={styles.tabsContainer}>
 					 {tabs.map(tab => this.renderTab(tab))}
 				</View>
+
 				<ProductsContainer items = {this.state.active}/>
+
 			</View>
 			);
 	}
@@ -70,25 +69,23 @@ const styles= StyleSheet.create({
 	tabsContainer : {
 		flex: 1,
 		flexDirection : "row",
+		borderBottomColor: "green",
+	  borderBottomWidth: 5,
 		marginTop: 30,
 		height: 30,
 		backgroundColor: "#fff",
 		width: 100+"%",
 	},
-	tabs: {
-	    borderBottomColor: "grey",
-	    borderBottomWidth: 2,
-	    marginVertical: 10,
-	    marginHorizontal: 10,
-  	},
-  	tab: {
-	    marginRight: 10,
-	    paddingBottom: 10
-  	},
-	  active: {
-	    borderBottomColor: "blue",
-	    borderBottomWidth: 3,
-	  },
+  tab: {
+		justifyContent: 'center',
+    alignItems: 'center',
+		flex: 1,
+	  padding: 10
+  },
+	active: {
+	  borderBottomColor: "blue",
+	  borderBottomWidth: 3,
+	},
 
 });
 
