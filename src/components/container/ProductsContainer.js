@@ -9,8 +9,8 @@ import ProductPreview from '../presentation/ProductPreview';
 
 class ProductsContainer extends React.Component {
 
-    renderProductPreview({item}){
-        return <ProductPreview />;
+    renderProductPreview({ item }){
+        return <ProductPreview item = {item} />;
     }
 
     returnKey(item){
@@ -18,10 +18,16 @@ class ProductsContainer extends React.Component {
     }
 
     render() {
+        num = [];
+        if(this.props.items ==1){
+                num = [1,3,5,7,9];
+            }else{
+                num = [2,4,6,8,10];
+            }
         return (
             <View style={styles.productsContainer}>
                 <FlatList
-                    data = {[1,2,3,4,5]}
+                    data = {num}
                     keyExtractor={this.returnKey}
                     renderItem={this.renderProductPreview}
                 />

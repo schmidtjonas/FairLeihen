@@ -8,8 +8,9 @@ import {
 import { WebBrowser } from 'expo';
 
 
-import ProductsContainer from '../container/ProductsContainer';
+
 import SearchBar from '../presentation/SearchBar';
+import TabSelect from '../presentation/TabSelect';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -21,11 +22,13 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.headerContainer}>
-          <SearchBar st/>
+         
+          <SearchBar />
+          
           </View>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             
-            <ProductsContainer />  
+          <TabSelect/>
 
           </ScrollView>
       </View>
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
   headerContainer : {
     width: 100 + "%",
     height: 90,
-    backgroundColor: '#000000', //'#F5FCFF'
+    backgroundColor: '#F5FCFF',
   },
   
 });

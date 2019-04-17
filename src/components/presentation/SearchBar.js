@@ -5,7 +5,8 @@ import {
     Text,
     View,
     Image,
-    Animated
+    Animated,
+    Dimensions
 } from "react-native";
 
 class SearchBar extends React.Component {
@@ -19,32 +20,33 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <TextInput
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-        onChangeText={(text) => this.setState({text})}
-        value={this.state.text}
-        onFocus={() => this.onFocus()}
-        style={styles.search}
-      />
+      <View>
+        <TextInput
+          placeholder="Search"
+          style={{height: 40, color:"#000"}}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+          style={styles.search}
+        />
+      </View>
     );
-  }
-
-  onFocus() {
-      this.setState({text: ''})
-      //bessere Animation in Plantapp, allerdings sehr aufwendig zu kopieren, da ein flexible Block genutzt wird,
-      //den die selbst implementiert haben
   }
 }
 
 const styles = StyleSheet.create({
     search : {
+        marginTop: 10,
         width: 65 + "%",
         left: 35 + "%",
         top: 30+"%",
         padding: 10,
-        backgroundColor: '#f9f9f9',
-        color: '#d4d9e0',
-        borderRadius: 40,
+        backgroundColor: '#c5ccd6',
+        borderColor: '#c5ccd6',
+        color: '#000',
+        borderRadius: 10,
+      },
+      searchIcon : {
+        padding: 10,
       }
 });
 

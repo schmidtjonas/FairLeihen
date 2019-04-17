@@ -9,6 +9,7 @@ import {
 class ProductPreview extends React.Component {
     
     render(){
+        const sel = (this.props.item%2 ==0) ? 1 : 2;
         return (
             <View style={styles.productContainer}>
                 <View style={styles.productLeft}>
@@ -18,7 +19,7 @@ class ProductPreview extends React.Component {
                     />
                 </View>
                 <View style={styles.productRight}>
-                    <Text style={styles.productTitle}>Titel</Text>
+                    <Text style={styles.productTitle}>Titel{sel}</Text>
                     <Text style={styles.productAdress}>Adresse</Text>
                     <Text style={styles.productPrice}>Preis</Text>
                 </View>
