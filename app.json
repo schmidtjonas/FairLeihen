@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "testProject",
-    "slug": "testProject",
+    "name": "FairLeihen",
+    "slug": "FairLeihen",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [

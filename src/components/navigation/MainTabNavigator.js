@@ -4,6 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import LoginScreen from '../screens/loginScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -24,6 +25,26 @@ HomeStack.navigationOptions = {
     />
   ),
 };
+
+const LoginStack = createStackNavigator({
+  Login: LoginScreen,
+});
+
+LoginStack.navigationOptions = {
+  tabBarLabel: 'Login',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+
 
 const LinksStack = createStackNavigator({
   Links: LinksScreen,
@@ -54,6 +75,7 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
+  LoginStack,
   HomeStack,
   LinksStack,
   SettingsStack,
