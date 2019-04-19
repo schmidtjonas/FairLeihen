@@ -32,7 +32,7 @@ export default class LoginScreen extends React.Component {
     http.post('/login', {username, password})
     .then(() => this.setState({textmessage: 'Logged in as ' + username}))
     .catch((err) => this.setState({textmessage: 'error: ' + err}));
-    this.props.navigation.navigate('LogIn');
+    this.props.navigation.navigate('Main');
   }
 
   onRegister(){
