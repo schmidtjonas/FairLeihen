@@ -39,9 +39,7 @@ export default class LoginScreen extends React.Component {
     .catch((err) => this.setState({textmessage: 'error: ' + err}));
     Keyboard.dismiss();
     if(this.state.loggedIn){
-      //navigation.navigate('HomeStack'); wie macht man das?
-      //Die Plantapp hat das mit den Stacks irgendwie ganz anders umgesetzt kA
-      //außerdem soll der login screen ja auch nicht untern in der Leiste sein
+      this.props.navigation.navigate('Main');
     }
   }
 

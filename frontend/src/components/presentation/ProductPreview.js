@@ -3,15 +3,22 @@ import {
     StyleSheet,
     Text,
     View,
-    Image
+    Image,
+    TouchableOpacity
 } from "react-native";
 
 class ProductPreview extends React.Component {
+
+    showProduct(){
+        return (
+            <Text>Test</Text>
+        );
+    }
     
     render(){
         const sel = (this.props.item%2 ==0) ? 1 : 2;
         return (
-            <View style={styles.productContainer}>
+            <TouchableOpacity onPress={() => this.props.navigation.push()} style={styles.productContainer}>
                 <View style={styles.productLeft}>
                     <Image
                         style={{width: 90, height: 90}}
@@ -23,7 +30,7 @@ class ProductPreview extends React.Component {
                     <Text style={styles.productAdress}>Adresse</Text>
                     <Text style={styles.productPrice}>Preis</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 
