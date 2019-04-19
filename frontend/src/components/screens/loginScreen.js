@@ -24,7 +24,7 @@ export default class LoginScreen extends React.Component {
   login(){
     console.log(this.state);
     console.log(this.hash(this.state.password));
-    
+    this.props.navigation.navigate('Main');
   }
 
   hash(string){
