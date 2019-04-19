@@ -56,7 +56,7 @@ def register():
     password = request.json.get('password', None)
     email = request.json.get('email', None)
 
-    if username in users.keys() or username is None or email is None or password is None:
+    if username in users.keys() or username is None or username == '' or email is None or password is None:
         abort(400)
 
     else:

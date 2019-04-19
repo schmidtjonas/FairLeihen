@@ -7,31 +7,43 @@ import {
   Button,
 } from 'react-native';
 
+import axios from 'axios';
 
+const serverurl = 'http://192.168.0.116:5000';
+const http = axios.create({
+  baseURL: serverurl,
+})
 
 export default class LoginScreen extends React.Component {
 
   constructor(props){
     super(props);
-    sha512 = require('hash.js/lib/hash/sha/512'); //npm install hash.js
 
     this.state = {
       username: '',
       password: '',
+      email: '',
+      textmessage: '',
     }
   }
 
-  login(){
-    console.log(this.state);
-    console.log(this.hash(this.state.password));
-    this.props.navigation.navigate('Main');
+  onLogin(){
+    const {username, password} = this.state;
+    http.post('/login', {username, password})
+    .then(() => this.setState({textmessage: 'Logged in as ' + username}))
+    .catch((err) => this.setState({textmessage: 'error: ' + err}));
+    this.props.navigation.navigate('LogIn');
   }
 
-  hash(string){
-    salt = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    return (salt + '$' + sha512().update(string + salt).digest('hex'))
+  onRegister(){
+    const {username, password, email} = this.state;
+    http.post('/register', {username, password, email})
+    .then(() => this.setState({textmessage: 'Registered' + username}))
+    .catch((err) => this.setState({textmessage: 'error: ' + err}));
+
+    
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
@@ -43,8 +55,16 @@ export default class LoginScreen extends React.Component {
           placeholder='Password' 
           secureTextEntry={true} 
           onChangeText={(val) => this.setState({password: val})}/>
+        
+        <TextInput 
+          placeholder='Email' 
+          onChangeText={(val) => this.setState({email: val})}/>
 
-        <Button title='Login!' onPress = {() => {this.login()}} />
+        <Button title='Login!' onPress = {() => {this.onLogin()}} />
+        <Button title='Register!' onPress = {() => {this.onRegister()}} />
+
+        <Text>{this.state.textmessage}</Text>
+
       </View>
     );
   }
