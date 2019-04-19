@@ -11,6 +11,7 @@ import { WebBrowser } from 'expo';
 
 import SearchBar from '../presentation/SearchBar';
 import TabSelect from '../presentation/TabSelect';
+import ProductsContainer from '../container/ProductsContainer';
 
 class HomeScreen extends React.Component {
   state = {
@@ -18,7 +19,6 @@ class HomeScreen extends React.Component {
   }
 
   changeTab = tab => {
-    console.log(tab);
     this.setState({activeTab: tab});
   }
 
@@ -27,13 +27,12 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.headerContainer}>      
-          <SearchBar />          
-          </View>
-          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            
-          <TabSelect tabs={[1, 2, 3]} callback={this.changeTab}/>
-
-          </ScrollView>
+          <SearchBar />  
+          <TabSelect tabs={[1, 2]} callback={this.changeTab}/>  
+        </View>
+        <ScrollView style={styles.container}>
+          <ProductsContainer tab={this.state.activeTab} />
+        </ScrollView>
       </View>
     );
   }
@@ -44,15 +43,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  contentContainer: {
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
   headerContainer : {
     width: 100 + "%",
-    height: 90,
+    height: 120,
     backgroundColor: '#F5FCFF',
   },
   

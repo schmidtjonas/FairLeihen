@@ -13,7 +13,7 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-        text: 'Search',
+        text: '',
      };
   }
 
@@ -23,7 +23,6 @@ class SearchBar extends React.Component {
       <View>
         <TextInput
           placeholder="Search"
-          style={{height: 40, color:"#000"}}
           onChangeText={(text) => this.setState({text})}
           value={this.state.text}
           style={styles.search}
@@ -40,10 +39,11 @@ const styles = StyleSheet.create({
         left: 35 + "%",
         top: 30+"%",
         padding: 10,
-        backgroundColor: '#c5ccd6',
-        borderColor: '#c5ccd6',
-        color: '#000',
+        backgroundColor: '#fff',
+        borderColor: '#fff',
+        color: 'grey',
         borderRadius: 10,
+        fontSize:16
       },
       searchIcon : {
         padding: 10,
