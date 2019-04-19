@@ -25,32 +25,42 @@ export default class LoginScreen extends React.Component {
       password: '',
       email: '',
       textmessage: '',
-      loggedIn: false,
     }
   }
 
   onLogin(){
     const {navigation} = this.props;
     const {username, password} = this.state;
+
     http.post('/login', {username, password})
-    .then(() => this.setState({
-      textmessage: 'Logged in as ' + username, username: '', password: '', loggedIn: true
-    }))
-    .catch((err) => this.setState({textmessage: 'error: ' + err}));
-    Keyboard.dismiss();
-    if(this.state.loggedIn){
+    .then(() => {
       this.props.navigation.navigate('Main');
-    }
+    })
+    .catch((err) => {
+      this.setState({
+        textmessage: String(err)
+      })
+      Keyboard.dismiss();
+    });
+    
+
   }
 
   onRegister(){
     const {username, password, email} = this.state;
     http.post('/register', {username, password, email})
     .then(() => this.setState({
-      textmessage: 'Registered ' + username, username: '', password: '', email: ''
+      textmessage: 'Registered ' + username, 
+      username: '', 
+      password: '', 
+      email: '',
     }))
-    .catch((err) => this.setState({textmessage: 'error: ' + err}));
-    Keyboard.dismiss();    
+    .catch((err) => this.setState({
+      textmessage: String(err)
+    }));
+
+    Keyboard.dismiss();
+    //what happens on correct registration?
   }
 
   render() {
