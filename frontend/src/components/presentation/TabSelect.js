@@ -10,6 +10,7 @@ import {
     TouchableOpacity
 } from "react-native";
 
+import Colors from  '../../constants/Colors';
 import ProductsContainer from '../container/ProductsContainer';
 
 class TabSelect extends React.Component{
@@ -29,6 +30,8 @@ class TabSelect extends React.Component{
   }
 
 	renderTab(tab) {
+		console.log(Colors.lightblue);
+
 	    const { active } = false;
 			const isActive = this.state.active === tab;
 
@@ -64,7 +67,7 @@ const styles= StyleSheet.create({
 	tabsContainer : {
 		flex: 1,
 		flexDirection : "row",
-		borderBottomColor: "green",
+		borderBottomColor: Colors.grey,
 	  borderBottomWidth: 1.5,
 		marginTop: 30,
 		height: 30,
@@ -74,12 +77,14 @@ const styles= StyleSheet.create({
 		justifyContent: 'center',
     alignItems: 'center',
 		flex: 1,
+		color: Colors.grey
   },
 	tabActive: {
 		justifyContent: 'center',
     alignItems: 'center',
 		flex: 1,
-		borderBottomColor: "#000",
+		borderBottomColor: Colors.lightblue,
+		color: Colors.lightblue,
 		borderBottomWidth: 3
 	},
 	tabText : {
