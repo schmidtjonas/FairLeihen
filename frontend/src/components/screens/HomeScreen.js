@@ -4,8 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
+  StatusBar
 } from 'react-native';
-import { WebBrowser } from 'expo';
+import Colors from  '../../constants/Colors';
 
 
 
@@ -15,7 +16,7 @@ import ProductsContainer from '../container/ProductsContainer';
 
 class HomeScreen extends React.Component {
   state = {
-    activeTab: 1,
+    activeTab: "Angebote",
   }
 
   changeTab = tab => {
@@ -25,10 +26,10 @@ class HomeScreen extends React.Component {
 
   render() {  
     return (
-      <View style={styles.container}>
+      <View style={styles.appContainer}>
         <View style={styles.headerContainer}>      
           <SearchBar />  
-          <TabSelect tabs={[1, 2]} callback={this.changeTab}/>  
+          <TabSelect tabs={["Angebote", "Karte"]} activeTab = {this.state.activeTab} callback={this.changeTab}/>  
         </View>
         <ScrollView style={styles.container}>
           <ProductsContainer tab={this.state.activeTab} />
@@ -39,14 +40,18 @@ class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  appContainer : {
+    flex: 1
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
   },
   headerContainer : {
     width: 100 + "%",
     height: 120,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: Colors.white,
+    paddingBottom: 20,
   },
   
 });

@@ -8,6 +8,7 @@ import {
     Animated,
     Dimensions
 } from "react-native";
+import Colors from "../../constants/Colors";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -34,14 +35,13 @@ class SearchBar extends React.Component {
 
 const styles = StyleSheet.create({
     search : {
-        marginTop: 10,
+        //marginTop: 10,
         width: 65 + "%",
         left: 35 + "%",
         top: 30+"%",
         padding: 10,
-        backgroundColor: '#fff',
-        borderColor: '#fff',
-        color: 'grey',
+        backgroundColor: '#F5F5F5',
+        color: Colors.grey,
         borderRadius: 10,
         fontSize:16
       },

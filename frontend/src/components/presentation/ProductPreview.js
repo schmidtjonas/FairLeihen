@@ -7,6 +7,7 @@ import {
     TouchableOpacity
 } from "react-native";
 import { withNavigation } from 'react-navigation';
+import Colors from "../../constants/Colors";
 
 class ProductPreview extends React.Component {
 
@@ -21,7 +22,7 @@ class ProductPreview extends React.Component {
             <TouchableOpacity onPress={() => this.showProduct()} style={styles.productContainer}>
                 <View style={styles.productLeft}>
                     <Image
-                        style={{width: 90, height: 90}}
+                        style={{width: 150, height: 150}}
                         source={{uri: 'https://www.welt.de/img/vermischtes/mobile166641813/3792501637-ci102l-w1024/CRESTED-BLACK-MACAQUE.jpg'}}
                     />
                 </View>
@@ -39,24 +40,25 @@ class ProductPreview extends React.Component {
 const styles = StyleSheet.create({
     productContainer : {
         flex: 1,
-        width: 100+"%",
         height: 150,  
-        borderRadius: 4,
-        borderWidth: 0.5,
-        borderColor: '#d6d7da',
+        borderRadius: 20,
         flexDirection: 'row',
+        marginTop: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        overflow: 'hidden',
     },
     productLeft : {
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'powderblue',
+        //alignItems: 'center',
+        backgroundColor: "#FFFFFF",
         flex: 1,
 
     },
     productRight : {
         padding: 20,
         justifyContent: 'center',
-        backgroundColor: 'skyblue',
+        backgroundColor: "#FFFFFF",
         flex: 1,
     },
     productTitle : {

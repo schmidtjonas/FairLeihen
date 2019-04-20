@@ -15,8 +15,9 @@ import ProductsContainer from '../container/ProductsContainer';
 
 class TabSelect extends React.Component{
 
+
 	state = {
-    	active: 1,
+    	active: this.props.activeTab,
     	categories: [],
   	
 	}
@@ -30,8 +31,7 @@ class TabSelect extends React.Component{
   }
 
 	renderTab(tab) {
-		console.log(Colors.lightblue);
-
+			console.log(this.state.active);
 	    const { active } = false;
 			const isActive = this.state.active === tab;
 
@@ -41,11 +41,9 @@ class TabSelect extends React.Component{
 		        onPress={() => this.handleTab(tab)}
 		        style={isActive ? styles.tabActive : styles.tab}
 		      >
-						<View>
-							<Text size={16} style={styles.tabText} medium gray={!isActive} secondary={isActive}>
+							<Text style={isActive ? styles.tabTextActive : styles.tabText}>
 								{tab}
 							</Text>
-						</View>
 		      </TouchableOpacity>
 		      
 	    )
@@ -65,30 +63,41 @@ class TabSelect extends React.Component{
 
 const styles= StyleSheet.create({
 	tabsContainer : {
+		marginLeft: 30,
+		marginRight: 30,
 		flex: 1,
 		flexDirection : "row",
 		borderBottomColor: Colors.grey,
-	  borderBottomWidth: 1.5,
-		marginTop: 30,
-		height: 30,
-		width: 100+"%",
+	  borderBottomWidth: 1,
+	//	marginTop: 30,
+		//width: 100+"%",
+	//	marginBottom: 10,
+		height: "auto",
 	},
   tab: {
+		padding: 10,
 		justifyContent: 'center',
     alignItems: 'center',
-		flex: 1,
-		color: Colors.grey
+		marginRight: 15,	
   },
 	tabActive: {
+		padding: 10,
 		justifyContent: 'center',
-    alignItems: 'center',
-		flex: 1,
+		alignItems: 'center',
+		marginRight: 15,
 		borderBottomColor: Colors.lightblue,
 		color: Colors.lightblue,
 		borderBottomWidth: 3
 	},
 	tabText : {
-	
+		fontSize: 18,
+		fontWeight: "bold",
+		color: Colors.grey
+	},
+	tabTextActive : {
+		fontSize: 18,
+		fontWeight: "bold",
+		color: Colors.lightblue,
 	}
 
 });
