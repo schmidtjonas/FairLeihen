@@ -28,10 +28,14 @@ export default class LoginScreen extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    //Hier alle asynchronen Verbindungen beenden um memory leaks zu verhindern
+  }
+
   onLogin(){
     const {navigation} = this.props;
     const {username, password} = this.state;
-
+    this.props.navigation.navigate('Main');
     http.post('/login', {username, password})
     .then(() => {
       this.props.navigation.navigate('Main');
@@ -61,6 +65,7 @@ export default class LoginScreen extends React.Component {
 
     Keyboard.dismiss();
     //what happens on correct registration?
+    
   }
 
   render() {

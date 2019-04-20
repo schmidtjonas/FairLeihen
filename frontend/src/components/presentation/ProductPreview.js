@@ -6,19 +6,19 @@ import {
     Image,
     TouchableOpacity
 } from "react-native";
+import { withNavigation } from 'react-navigation';
 
 class ProductPreview extends React.Component {
 
     showProduct(){
-        return (
-            <Text>Test</Text>
-        );
+        //console.log(this.props.naviagtion);
+        this.props.navigation.push('Product');
     }
     
     render(){
         const sel = (this.props.item%2 ==0) ? 1 : 2;
         return (
-            <TouchableOpacity onPress={() => this.props.navigation.push()} style={styles.productContainer}>
+            <TouchableOpacity onPress={() => this.showProduct()} style={styles.productContainer}>
                 <View style={styles.productLeft}>
                     <Image
                         style={{width: 90, height: 90}}
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ProductPreview;
+export default withNavigation(ProductPreview);

@@ -18,6 +18,7 @@ class ProductsContainer extends React.Component {
     }
 
     render() {
+        console.log(this.props.navigation);
         num = [];
         if(this.props.tab ==1){
                 num = [1,3,5,7,9];

@@ -23,7 +23,7 @@ class HomeScreen extends React.Component {
   }
 
 
-  render() {
+  render() {  
     return (
       <View style={styles.container}>
         <View style={styles.headerContainer}>      
