@@ -10,16 +10,12 @@ import Product from '../presentation/Product';
 
 
 class ProductScreen extends React.Component {
-  state = {
-  }
-
-
 
   render() {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
-          <Product/>
+          <Product itemId ={ this.props.navigation.getParam('itemId', 'Error No ID given')}/>
         </ScrollView>
       </View>
     );

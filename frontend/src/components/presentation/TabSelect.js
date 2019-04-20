@@ -31,7 +31,6 @@ class TabSelect extends React.Component{
   }
 
 	renderTab(tab) {
-			console.log(this.state.active);
 	    const { active } = false;
 			const isActive = this.state.active === tab;
 

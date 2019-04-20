@@ -17,6 +17,8 @@ const http = axios.create({
 
 export default class LoginScreen extends React.Component {
 
+  isMounted = false;
+
   constructor(props){
     super(props);
 
@@ -28,8 +30,13 @@ export default class LoginScreen extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
   componentWillUnmount(){
     //Hier alle asynchronen Verbindungen beenden um memory leaks zu verhindern
+    this.isMounted = false;
   }
 
   onLogin(){
@@ -41,9 +48,11 @@ export default class LoginScreen extends React.Component {
       this.props.navigation.navigate('Main');
     })
     .catch((err) => {
-      this.setState({
-        textmessage: String(err)
-      })
+      if(this.isMounted){
+        this.setState({
+          textmessage: String(err)
+        })
+      }
       Keyboard.dismiss();
     });
     

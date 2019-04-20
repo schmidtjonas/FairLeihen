@@ -11,13 +11,21 @@ import Colors from "../../constants/Colors";
 
 class ProductPreview extends React.Component {
 
+    state = {
+        id : 0,
+        title: "Test",
+        price: 0,
+        location: "Stahnsdorferstraße 144B",
+        distance: 0,
+        seller: "",
+        imgLink : "",
+    }
+
     showProduct(){
-        //console.log(this.props.naviagtion);
-        this.props.navigation.push('Product');
+        this.props.navigation.push('Product', { itemId : this.state.id});
     }
     
     render(){
-        const sel = (this.props.item%2 ==0) ? 1 : 2;
         return (
             <TouchableOpacity onPress={() => this.showProduct()} style={styles.productContainer}>
                 <View style={styles.productLeft}>
@@ -27,9 +35,9 @@ class ProductPreview extends React.Component {
                     />
                 </View>
                 <View style={styles.productRight}>
-                    <Text style={styles.productTitle}>Titel{sel}</Text>
-                    <Text style={styles.productAdress}>Adresse</Text>
-                    <Text style={styles.productPrice}>Preis</Text>
+                    <Text style={styles.productTitle}>{this.state.title}</Text>
+                    <Text style={styles.productAdress}>{this.state.location}</Text>
+                    <Text style={styles.productPrice}>{this.state.price} €</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -62,13 +70,17 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     productTitle : {
-
+        color: Colors.black,
+        fontSize: 18,
     },
     productAdress : {
+        color: Colors.grey,
+        fontSize: 14,
 
     },
     productPrice : {
-
+        color: Colors.grey,
+        fontSize: 14,
     },
 });
 
