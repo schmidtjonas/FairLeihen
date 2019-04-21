@@ -30,7 +30,7 @@ class ProductsContainer extends React.Component {
             }else if(this.props.tab == "Karte"){
                 return(
                     <View style = {styles.mapContainer}>
-                        <Text>Hier kommt die Karte hin</Text>
+                        <Text>Hier kommt nicht unbedingt die Karte hin.</Text>
                     </View>
                 );
             }
