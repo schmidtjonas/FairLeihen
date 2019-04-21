@@ -41,9 +41,6 @@ class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   appContainer : {
-    flex: 1
-  },
-  container: {
     flex: 1,
     backgroundColor: Colors.white,
   },
@@ -51,8 +48,14 @@ const styles = StyleSheet.create({
     width: 100 + "%",
     height: 120,
     backgroundColor: Colors.white,
+    marginTop:25,
     paddingBottom: 20,
   },
+  container: {
+    flex: 1,
+    backgroundColor: Colors.white,
+  },
+
   
 });
 

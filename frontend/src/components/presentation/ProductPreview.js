@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     productContainer : {
         flex: 1,
         height: 150,  
-        borderRadius: 20,
+        borderRadius: 15,
         flexDirection: 'row',
         marginTop: 10,
         marginLeft: 20,

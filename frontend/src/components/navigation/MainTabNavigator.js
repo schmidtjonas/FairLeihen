@@ -4,18 +4,26 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/loginScreen';
 import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import ProductScreen from '../screens/ProductScreen';
+import Colors from '../../constants/Colors';
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  Home: {
+    screen : HomeScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
   Product: ProductScreen,
 });
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
+  tabBarOptions: { 
+    activeTintColor: Colors.lightblue,
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -27,25 +35,6 @@ HomeStack.navigationOptions = {
     />
   ),
 };
-
-const LoginStack = createStackNavigator({
-  Login: LoginScreen,
-});
-
-LoginStack.navigationOptions = {
-  tabBarLabel: 'Login',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
 
 
 const LinksStack = createStackNavigator({
@@ -54,6 +43,9 @@ const LinksStack = createStackNavigator({
 
 LinksStack.navigationOptions = {
   tabBarLabel: 'Links',
+  tabBarOptions: { 
+    activeTintColor: Colors.lightblue,
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -62,22 +54,31 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const ProfileStack = createStackNavigator({
+  Profile: {
+    screen : ProfileScreen,
+    navigationOptions: {
+      header: null,
+    },
+  }
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ProfileStack.navigationOptions = {
+  tabBarLabel: 'Profile',
+  tabBarOptions: { 
+    activeTintColor: Colors.lightblue,
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'}
     />
   ),
 };
 
+
 export default createBottomTabNavigator({
   Home: HomeStack,
   Links: LinksStack,
-  Setings: SettingsStack,
+  Profile: ProfileStack,
 });
