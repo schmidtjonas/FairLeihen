@@ -1,9 +1,11 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
 import MapView from 'react-native-maps';
 
+//In diesem Screen ist erstmal die Map
+//Ich war zu faul alles umzubenennen aber das sollten wir dann tun
 
 
 export default class LinksScreen extends React.Component {
