@@ -1,16 +1,16 @@
 from flask import Flask, request, abort, jsonify, g, current_app
 from flask.cli import with_appcontext
-import sqlite3
-import click
+#import sqlite3
 
 from hashing import hash_password, verify_password
+from flask_sqlalchemy import SQLAlchemy
+
 from database import *
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///Users/Jonas/OneDrive/Projekte/react/FairLeihen/backend/fairleihen.db'
 
-
-
-users = {}
+db = SQLAlchemy(app)
 
 @app.route('/')
 def hello():
@@ -21,12 +21,12 @@ def login():
     username = request.json.get('username', None)
     password = request.json.get('password', None)
 
-    user_exists = username in users.keys()
+    userExists = User.query.filter_by(username=username).first() is not None
 
-    if username is None or not user_exists:
+    if not userExists:
         abort(401)
     
-    elif verify_password(users[username]['password'], password):
+    elif verify_password(User.query.filter_by(username=username).first().password, password):
         return jsonify({
             'status': 'OK',
             'message': 'Successfully logged in'
@@ -37,17 +37,20 @@ def login():
 @app.route('/register', methods=['POST'])
 def register():
     username = request.json.get('username', None)
-    password = request.json.get('password', None)
+    password = hash_password(request.json.get('password', None))
     email = request.json.get('email', None)
 
-    if username in users.keys() or username is None or username == '' or email is None or password is None:
+    userExists = User.query.filter_by(username=username).first() is not None
+    emailExists = User.query.filter_by(email=email).first() is not None
+
+    if userExists or emailExists:
         abort(400)
 
     else:
-        users[username] = {
-            'password': hash_password(password),
-            'email': email
-        }
+        db.session.add(User(username=username, email=email, password=password))
+        db.session.commit()
+        print(User.query.all())
+
         return jsonify({
             'status': 'OK',
             'message': 'Successfully registered'
@@ -59,5 +62,4 @@ def getProduct(productID):
 
 
 if __name__ == '__main__':
-    init_app(app)
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True) #, host='0.0.0.0'
