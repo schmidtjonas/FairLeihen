@@ -40,7 +40,6 @@ export default class LoginScreen extends React.Component {
   }
 
   onLogin(){
-    const {navigation} = this.props;
     const {username, password} = this.state;
     this.props.navigation.navigate('Main');
     http.post('/login', {username, password})
