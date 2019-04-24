@@ -1,30 +1,14 @@
-from flask import Flask, request, abort, jsonify
+from flask import Flask, request, abort, jsonify, g, current_app
+from flask.cli import with_appcontext
+import sqlite3
+import click
 
-import hashlib, binascii, os
- 
-def hash_password(password):
-    """Hash a password for storing."""
-    salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
-    pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), 
-                                salt, 100000)
-    pwdhash = binascii.hexlify(pwdhash)
-    return (salt + pwdhash).decode('ascii')
- 
-def verify_password(stored_password, provided_password):
-    """Verify a stored password against one provided by user"""
-    salt = stored_password[:64]
-    stored_password = stored_password[64:]
-    pwdhash = hashlib.pbkdf2_hmac('sha512', 
-                                  provided_password.encode('utf-8'), 
-                                  salt.encode('ascii'), 
-                                  100000)
-    pwdhash = binascii.hexlify(pwdhash).decode('ascii')
-    return pwdhash == stored_password
-
-
-
+from hashing import hash_password, verify_password
+from database import *
 
 app = Flask(__name__)
+
+
 
 users = {}
 
@@ -69,6 +53,11 @@ def register():
             'message': 'Successfully registered'
             })
 
+@app.route('/getProduct/<productID>')
+def getProduct(productID):
+    pass
+
 
 if __name__ == '__main__':
+    init_app(app)
     app.run(debug=True, host='0.0.0.0')
