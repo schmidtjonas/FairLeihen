@@ -10,8 +10,9 @@ import os
 
 app = Flask(__name__)
 
-projectDir = os.getcwd()[:-3] + 'data'
-databaseFile = 'sqlite:///{}'.format(projectDir + '/fairleihen.db')
+projectDir = os.path.dirname(os.path.realpath(__file__))[:-3]
+databaseFile = 'sqlite:///{}'.format(projectDir + '/data/fairleihen.db')
+print(databaseFile)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = databaseFile
 
