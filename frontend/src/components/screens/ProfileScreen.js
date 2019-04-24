@@ -34,7 +34,9 @@ class HomeScreen extends React.Component {
             </View>        
         </View>
         <ScrollView style={styles.itemsContainer}>
-          <Text>Test2</Text>
+          <Text>
+
+          </Text>
         </ScrollView>
       </View>
     );
@@ -52,8 +54,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     width: 100+"%",
     height: 120,
-    justifyContent: "center",
+    //justifyContent: "center",
     alignItems: 'center',
+    paddingRight: 10,
   },
   itemsContainer : {
     margin: 20,
