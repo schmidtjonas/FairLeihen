@@ -6,9 +6,14 @@ from hashing import hash_password, verify_password
 from flask_sqlalchemy import SQLAlchemy
 
 from database import *
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///Users/Jonas/OneDrive/Projekte/react/FairLeihen/backend/fairleihen.db'
+
+projectDir = os.path.dirname(os.path.abspath(__file__))
+databaseFile = 'sqlite:///{}'.format(os.path.join(projectDir, 'fairleihen.db'))
+
+app.config['SQLALCHEMY_DATABASE_URI'] = databaseFile
 
 db = SQLAlchemy(app)
 
