@@ -10,7 +10,7 @@ import {
 
 import axios from 'axios';
 
-const serverurl = 'http://192.168.0.116:5000';
+const serverurl = 'http://192.168.0.101:5000';
 const http = axios.create({
   baseURL: serverurl,
 })
@@ -41,7 +41,7 @@ export default class LoginScreen extends React.Component {
 
   onLogin(){
     const {username, password} = this.state;
-    this.props.navigation.navigate('Main');
+    //this.props.navigation.navigate('Main');
     http.post('/login', {username, password})
     .then(() => {
       this.props.navigation.navigate('Main');

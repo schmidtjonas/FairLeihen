@@ -10,12 +10,13 @@ import os
 
 app = Flask(__name__)
 
-projectDir = os.path.dirname(os.path.abspath(__file__))
-databaseFile = 'sqlite:///{}'.format(os.path.join(projectDir, 'fairleihen.db'))
+projectDir = os.getcwd()[:-3] + 'data'
+databaseFile = 'sqlite:///{}'.format(projectDir + '/fairleihen.db')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = databaseFile
 
 db = SQLAlchemy(app)
+
 
 @app.route('/')
 def hello():
@@ -67,4 +68,6 @@ def getProduct(productID):
 
 
 if __name__ == '__main__':
+    print(User.query.all())
+
     app.run(debug=True, host='0.0.0.0') 
