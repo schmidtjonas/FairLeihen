@@ -10,7 +10,7 @@ import {
 
 import axios from 'axios';
 
-const serverurl = 'http://192.168.0.116:5000';
+const serverurl = 'http://192.168.178.32:5000';
 const http = axios.create({
   baseURL: serverurl,
 })
