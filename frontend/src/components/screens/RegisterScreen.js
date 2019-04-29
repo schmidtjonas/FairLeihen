@@ -39,27 +39,24 @@ export default class LoginScreen extends React.Component {
     this.isMounted = false;
   }
 
-  onLogin(){
-    const {username, password} = this.state;
-    //this.props.navigation.navigate('Main');
-    http.post('/login', {username, password})
-    .then(() => {
-      this.props.navigation.navigate('Main');
-    })
-    .catch((err) => {
-      if(this.isMounted){
-        this.setState({
-          textmessage: String(err)
-        })
-      }
-      Keyboard.dismiss();
-    });
-    
-
-  }
 
   onRegister(){
-    this.props.navigation.push('Register');
+    const {username, password, email} = this.state;
+    http.post('/register', {username, password, email})
+    .then(() => this.setState({
+      textmessage: 'Registered ' + username, 
+      username: '', 
+      password: '', 
+      email: '',
+    }))
+    .catch((err) => this.setState({
+      textmessage: String(err)
+    }));
+
+    Keyboard.dismiss();
+    this.props.navigation.goBack();
+    //what happens on correct registration?
+    
   }
 
   render() {
@@ -74,15 +71,14 @@ export default class LoginScreen extends React.Component {
           placeholder='Password' 
           secureTextEntry={true} 
           onChangeText={(val) => this.setState({password: val})}
-          value={this.state.password}/>      
+          value={this.state.password}/>
+        
+        <TextInput 
+          placeholder='Email' 
+          onChangeText={(val) => this.setState({email: val})}
+          value={this.state.email}/>
 
-        <Button title='Login!' onPress = {() => {this.onLogin()}} />
-        <Text> Not registered yet? 
-          <Text style={{color: 'blue'}}
-              onPress = {() => {this.onRegister()}}>
-              Register!
-            </Text>
-        </Text>
+        <Button title='Register now!' onPress = {() => {this.onRegister()}} />
 
         <Text>{this.state.textmessage}</Text>
 

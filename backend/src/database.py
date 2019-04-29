@@ -19,7 +19,9 @@ class Product(db.Model):
     street = db.Column(db.String(100), nullable=False)
     plz = db.Column(db.int(10),  nullable=False)
     town = db.Column(db.int(100),  nullable=False)
+    category = db.Column(db.String(100), nullable=False)
     userID = db.Column(db.Integer, nullable=False)
+
 
     def __repr__(self):
         return '<Product %r>' % self.title
