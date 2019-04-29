@@ -15,7 +15,7 @@ const http = axios.create({
   baseURL: serverurl,
 })
 
-export default class LoginScreen extends React.Component {
+export default class RegisterScreen extends React.Component {
 
   isMounted = false;
 

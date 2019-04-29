@@ -77,10 +77,10 @@ export default class LoginScreen extends React.Component {
           value={this.state.password}/>      
 
         <Button title='Login!' onPress = {() => {this.onLogin()}} />
-        <Text> Not registered yet? 
+        <Text> Noch nicht registriert?
           <Text style={{color: 'blue'}}
               onPress = {() => {this.onRegister()}}>
-              Register!
+              Jetzt Account erstellen!
             </Text>
         </Text>
 

@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import MapScreen from '../screens/MaoScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ProductScreen from '../screens/ProductScreen';
 import Colors from '../../constants/Colors';
@@ -37,11 +37,11 @@ HomeStack.navigationOptions = {
 };
 
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const MapStack = createStackNavigator({
+  Map: MapScreen,
 });
 
-LinksStack.navigationOptions = {
+MapStack.navigationOptions = {
   tabBarLabel: 'Karte',
   tabBarOptions: { 
     activeTintColor: Colors.lightblue,
@@ -79,6 +79,6 @@ ProfileStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   Home: HomeStack,
-  Links: LinksStack,
+  Map: MapStack,
   Profile: ProfileStack,
 });

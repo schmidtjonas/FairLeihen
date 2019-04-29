@@ -1,16 +1,9 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
-
 import MapView from 'react-native-maps';
 import { Constants, Location, Permissions } from 'expo';
 
-
-//In diesem Screen ist erstmal die Map
-//Ich war zu faul alles umzubenennen aber das sollten wir dann tun
-
-
-export default class LinksScreen extends React.Component {
+export default class MapScreen extends React.Component {
 
   static navigationOptions = {
     title: 'Map',
@@ -52,12 +45,6 @@ render() {
     <View style={styles.container}>
       
       {
-        //this.state.locationResult === null ?
-        //<Text>Finding your current location...</Text> :
-        //this.state.hasLocationPermissions === false ?
-          //<Text>Location permissions are not granted.</Text> :
-          //this.state.mapRegion === null ?
-          //<Text>Map region doesn't exist.</Text> :
           <MapView style={styles.map}
           provider={'google'}
           
