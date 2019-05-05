@@ -11,7 +11,7 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-class Product(db.Model):
+""" class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
@@ -20,8 +20,8 @@ class Product(db.Model):
     plz = db.Column(db.Integer(10),  nullable=False)
     town = db.Column(db.Integer(100),  nullable=False)
     category = db.Column(db.String(100), nullable=False)
-    userID = db.Column(db.Integer, nullable=False)
+    userID = db.Column(db.Integer, nullable=False) 
 
 
     def __repr__(self):
-        return '<Product %r>' % self.title
+        return '<Product %r>' % self.title"""

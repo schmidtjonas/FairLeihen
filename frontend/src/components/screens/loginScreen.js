@@ -5,12 +5,15 @@ import {
   View,
   TextInput,
   Button,
-  Keyboard
+  Keyboard,
+  ActivityIndicator,
+  KeyboardAvoidingView,
 } from 'react-native';
 
 import axios from 'axios';
 
-const serverurl = 'http://192.168.0.107:5000'; //local pi url rest kommt später
+//const serverurl = 'http://192.168.0.107:5000'; //local pi url 
+const serverurl = 'http://192.168.0.101:5000';
 const http = axios.create({
   baseURL: serverurl,
 })
@@ -27,6 +30,9 @@ export default class LoginScreen extends React.Component {
       password: '',
       email: '',
       textmessage: '',
+      loading: '',
+      usernameErr: false,
+      passwordErr: false,
     }
   }
 
@@ -42,41 +48,54 @@ export default class LoginScreen extends React.Component {
   onLogin(){
     const {username, password} = this.state;
     //this.props.navigation.navigate('Main');
+
+    Keyboard.dismiss();
+    this.setState({loading: true})
     http.post('/login', {username, password})
     .then(() => {
+      this.setState({loading: false, passwordErr: false})
       this.props.navigation.navigate('Main');
     })
     .catch((err) => {
-      if(this.isMounted){
-        this.setState({
-          textmessage: String(err)
-        })
-      }
-      Keyboard.dismiss();
+      this.setState({loading: false, passwordErr: true})
     });
-    
-
   }
 
   onRegister(){
     this.props.navigation.push('Register');
   }
 
+  checkUsername(){
+    const {username} = this.state;
+    http.post('/checkUsername', {username})
+    .then(() => this.setState({usernameErr: false}))
+    .catch(() => this.setState({usernameErr: true}));
+  }
+
   render() {
+    const {loading, errors, usernameErr, passwordErr} = this.state;
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
         <TextInput 
+          style={usernameErr ? styles.hasErrors : styles.input}
           placeholder='Username' 
           onChangeText={(val) => this.setState({username: val})}
+          onEndEditing={() => this.checkUsername()}
           value={this.state.username}/>
 
         <TextInput 
+          style={passwordErr ? styles.hasErrors : styles.input}
           placeholder='Password' 
           secureTextEntry={true} 
           onChangeText={(val) => this.setState({password: val})}
           value={this.state.password}/>      
 
-        <Button title='Login!' onPress = {() => {this.onLogin()}} />
+        <Button gradient title='Login!' onPress = {() => {this.onLogin()}}>
+          {loading ?
+            <ActivityIndicator size="small" color="white" /> : 
+            <Text bold white center>Login</Text>
+          }
+        </Button>
         <Text> Noch nicht registriert?
           <Text style={{color: 'blue'}}
               onPress = {() => {this.onRegister()}}>
@@ -86,7 +105,7 @@ export default class LoginScreen extends React.Component {
 
         <Text>{this.state.textmessage}</Text>
 
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -107,5 +126,14 @@ const styles = StyleSheet.create({
     height: 90,
     backgroundColor: '#F5FCFF',
   },
-  
+  hasErrors: {
+    backgroundColor: '#EAEB5E',
+  },
+  input: {
+    backgroundColor: '#fff',
+    borderRadius: 0,
+    borderWidth: 0,
+    borderBottomColor: '#ddd',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  }
 });

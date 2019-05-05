@@ -40,6 +40,16 @@ def login():
             })
     abort(403)
 
+@app.route('/checkUsername', methods=['POST'])
+def checkUsernameme():
+    username = request.json.get('username', None)
+
+    if User.query.filter_by(username=username).first() is not None:
+        return jsonify({
+            'status': 'OK',
+            'message': 'Successfully logged in'
+        })
+    abort(401)
 
 @app.route('/register', methods=['POST'])
 def register():
