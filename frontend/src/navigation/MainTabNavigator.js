@@ -2,12 +2,12 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import TabBarIcon from '../TabBarIcon';
+import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ProductScreen from '../screens/ProductScreen';
-import Colors from '../../constants/Colors';
+import Colors from '../constants/Colors';
 
 const HomeStack = createStackNavigator({
   Home: {

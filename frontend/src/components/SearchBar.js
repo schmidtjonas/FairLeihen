@@ -8,7 +8,7 @@ import {
     Animated,
     Dimensions
 } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "../constants/Colors";
 
 class SearchBar extends React.Component {
   constructor(props) {

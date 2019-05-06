@@ -7,13 +7,13 @@ import {
   StatusBar,
   Image
 } from 'react-native';
-import Colors from  '../../constants/Colors';
+import Colors from  '../constants/Colors';
 
 
 
-import SearchBar from '../presentation/SearchBar';
-import TabSelect from '../presentation/TabSelect';
-import ProductsContainer from '../container/ProductsContainer';
+import SearchBar from '../components/SearchBar';
+import TabSelect from '../components/TabSelect';
+import ProductsContainer from '../components/ProductsContainer';
 
 class HomeScreen extends React.Component {
   state = {

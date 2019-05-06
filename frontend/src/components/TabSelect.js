@@ -10,8 +10,8 @@ import {
     TouchableOpacity
 } from "react-native";
 
-import Colors from  '../../constants/Colors';
-import ProductsContainer from '../container/ProductsContainer';
+import Colors from  '../constants/Colors';
+import ProductsContainer from 'ProductsContainer';
 
 class TabSelect extends React.Component{
 

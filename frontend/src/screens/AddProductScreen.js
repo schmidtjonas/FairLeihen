@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import Product from '../presentation/Product';
+import Product from '../components/Product';
 
 
 class ProductScreen extends React.Component {
@@ -15,7 +15,7 @@ class ProductScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
-          <Product itemId ={ this.props.navigation.getParam('itemId', 'Error No ID given')}/>
+          
         </ScrollView>
       </View>
     );

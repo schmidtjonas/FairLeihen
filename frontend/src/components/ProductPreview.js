@@ -7,7 +7,7 @@ import {
     TouchableOpacity
 } from "react-native";
 import { withNavigation } from 'react-navigation';
-import Colors from "../../constants/Colors";
+import Colors from "../constants/Colors";
 
 class ProductPreview extends React.Component {
 

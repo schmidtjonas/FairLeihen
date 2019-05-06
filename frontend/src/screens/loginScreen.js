@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 
 import axios from 'axios';
+import Colors from '../constants/Colors';
+
 
 //const serverurl = 'http://192.168.0.107:5000'; //local pi url 
 const serverurl = 'http://192.168.0.101:5000';
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   hasErrors: {
-    backgroundColor: '#EAEB5E',
+    backgroundColor: Colors.warningText,
   },
   input: {
     backgroundColor: '#fff',

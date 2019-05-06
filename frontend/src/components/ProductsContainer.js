@@ -6,7 +6,7 @@ import {
     Text
 } from "react-native";
 
-import ProductPreview from '../presentation/ProductPreview';
+import ProductPreview from 'ProductPreview';
 
 class ProductsContainer extends React.Component {
 
