@@ -10,9 +10,9 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
+import { Input, Button } from 'react-native-elements';
 import axios from 'axios';
 import Colors from '../constants/Colors';
-
 
 //const serverurl = 'http://192.168.0.107:5000'; //local pi url 
 const serverurl = 'http://192.168.0.101:5000';
@@ -78,8 +78,10 @@ export default class LoginScreen extends React.Component {
     const {loading, errors, usernameErr, passwordErr} = this.state;
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
-        <TextInput 
-          style={usernameErr ? styles.hasErrors : styles.input}
+        <Input 
+          style={styles.input}
+          errorStyle={{ color: Colors.warningText }}
+          errorMessage={usernameErr ? "Dieser User existiert nicht." : ""}
           placeholder='Username' 
           onChangeText={(val) => this.setState({username: val})}
           onEndEditing={() => this.checkUsername()}
